@@ -109,6 +109,9 @@ import express from "express";
 
 // create express app instance to create web server
 const app = express();
+app.get("/", (req, res) => {
+  res.send("server is up");
+});
 // todo 2
 app.get("/echo", (req,res)=>{const {name, age} = req.query;
   if (!name || !age) {
@@ -116,7 +119,12 @@ app.get("/echo", (req,res)=>{const {name, age} = req.query;
   }
   return res.json({ok:true, name, age, msg:"Hello <name>, you are <age>"});
 });
-
+// todo 3
+app.get("/profile/:first/:last", (req,res)=>{const { first, last } = req.params;
+return res.json({
+    ok: true, fullName: `${first} ${last}`
+  });
+});
 // Query params: /echo?name=Ali&age=22
 
 
