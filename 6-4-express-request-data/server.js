@@ -109,6 +109,7 @@ import express from "express";
 
 // create express app instance to create web server
 const app = express();
+app.use(express.json());
 app.get("/", (req, res) => {
   res.send("server is up");
 });
@@ -136,7 +137,10 @@ app.param("userId", (req,res,next,userId)=>{
     req.userIdNum = num;
     next();
     });
-
+// todo 5
+app.get("/users/:userId", (req,res)=>{ 
+   return res.json({ ok:true, userId: req.userIdNum })
+});
 // Query params: /echo?name=Ali&age=22
 
 
