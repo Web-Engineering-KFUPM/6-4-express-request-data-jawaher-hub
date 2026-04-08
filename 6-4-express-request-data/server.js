@@ -105,9 +105,10 @@ LAB SETUP INSTRUCTIONS
  */
 
 //import express
-
+import express from "express";
 
 // create express app instance to create web server
+const app = express();
 
 
 
@@ -124,5 +125,7 @@ LAB SETUP INSTRUCTIONS
 
 
 // Start the server by listening
-
+app.listen(3000, () => {
+  console.log("API running at http://localhost:3000");
+});
 
